@@ -9,15 +9,11 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private val LOG_TAG = RegisterActivity::class.java.name
-    private val PREF_KEY = RegisterActivity::class.java.`package`?.toString()
-    private val SECRET_KEY = 123;
 
-    private lateinit var userNameEditText: EditText
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
-    private lateinit var passwordAgainEditText: EditText
 
     private lateinit var mAuth: FirebaseAuth;
 
@@ -25,45 +21,34 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide();
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_login)
 
-        userNameEditText = findViewById(R.id.userNameEditText)
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
-        passwordAgainEditText = findViewById(R.id.passwordAgainEditText)
 
         mAuth = FirebaseAuth.getInstance()
     }
 
-    fun register(view: View) {
-        if (userNameEditText.text.isEmpty() || emailEditText.text.isEmpty() ||
-                passwordEditText.text.isEmpty() || passwordAgainEditText.text.isEmpty()) {
+    fun login(view: View) {
+        if (emailEditText.text.isEmpty() || passwordEditText.text.isEmpty()) {
             Toast.makeText(this, "You must fill all fields.", Toast.LENGTH_SHORT).show()
             return
         }
-        val userName = userNameEditText.text.toString()
-        val email = emailEditText.text.toString()
+
+        val userName = emailEditText.text.toString()
         val password: String = passwordEditText.text.toString()
-        val passwordAgain: String = passwordAgainEditText.text.toString()
 
-        if (!password.equals(passwordAgain)) {
-            Log.e(LOG_TAG, "The passwords are not the same.")
-            return
-        }
-
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+        mAuth.signInWithEmailAndPassword(userName, password).addOnCompleteListener {
             if (it.isSuccessful) {
-                val successText = "User created successfully."
+                val successText = "Logged in successfully."
                 Log.d(LOG_TAG, successText)
                 Toast.makeText(this, successText, Toast.LENGTH_SHORT).show()
             } else {
-                val errorText = "User creation failed (${it.exception?.message})."
+                val errorText = "Login failed (${it.exception?.message})."
                 Log.d(LOG_TAG, errorText)
                 Toast.makeText(this, errorText, Toast.LENGTH_LONG).show()
             }
         }
-
-        Log.i(LOG_TAG, "Sign Up: $userName $email")
     }
 
     fun cancel(view: View) = finish()

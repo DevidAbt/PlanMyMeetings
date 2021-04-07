@@ -29,13 +29,14 @@
     <Button
         android:text="@string/register"
         style="@style/MainButtonStyle"
-        android:onClick="register"
+        android:onClick="gotoRegister"
         />
 
     <Button
         android:text="@string/login"
         style="@style/MainButtonStyle"
         android:layout_margin="5dp"
+        android:onClick="gotoLogin"
         />
 
 </LinearLayout>

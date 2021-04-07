@@ -8,19 +8,12 @@
     android:gravity="center"
     android:theme="@style/Theme.PlanMyMeetings"
     android:background="@color/background_color"
-    tools:context=".RegisterActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         style="@style/TitleText"
-        android:text="@string/register"
+        android:text="@string/login"
         />
-
-    <EditText
-        android:id="@+id/userNameEditText"
-        style="@style/AuthInputField"
-        android:inputType="textPersonName"
-        android:hint="@string/username"
-        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/emailEditText"
@@ -36,20 +29,11 @@
         android:hint="@string/password"
         tools:ignore="Autofill" />
 
-    <EditText
-        android:id="@+id/passwordAgainEditText"
-        style="@style/AuthInputField"
-        android:inputType="textPassword"
-        android:hint="@string/password_again"
-        tools:ignore="Autofill"
-        android:layout_marginBottom="50dp"
-        />
-
     <Button
         style="@style/MainButtonStyle"
-        android:text="@string/register"
+        android:text="@string/login"
         android:layout_marginTop="30dp"
-        android:onClick="gotoRegister"
+        android:onClick="login"
         />
 
     <Button
