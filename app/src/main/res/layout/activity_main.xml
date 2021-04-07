@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="#151515"-->
-<!--    tools:context=".MainActivity">-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -23,8 +16,15 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="270dp"
-        android:layout_height="513dp"
-        app:srcCompat="@drawable/logo_with_text" />
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/logo" />
+
+    <TextView
+        style="@style/TitleText"
+        android:text="Plan\nMy\nMeetings"
+        android:textAlignment="center"
+        />
 
     <Button
         android:text="@string/register"
@@ -40,4 +40,3 @@
         />
 
 </LinearLayout>
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

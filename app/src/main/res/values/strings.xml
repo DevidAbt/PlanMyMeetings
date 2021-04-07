@@ -7,4 +7,5 @@
     <string name="password">password</string>
     <string name="password_again">password again</string>
     <string name="cancel">cancel</string>
+    <string name="logo">logo</string>
 </resources>
