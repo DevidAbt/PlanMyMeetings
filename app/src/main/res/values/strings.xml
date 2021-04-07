@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Plan My Meetings</string>
+    <string name="register">Sign Up</string>
+    <string name="login">Log In</string>
+    <string name="username">username</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="password_again">password again</string>
+    <string name="cancel">cancel</string>
+</resources>

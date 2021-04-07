@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "414494402074",
+    "project_id": "plan-my-meetings",
+    "storage_bucket": "plan-my-meetings.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414494402074:android:5438f0b450d2d58b35d3a3",
+        "android_client_info": {
+          "package_name": "com.example.planmymeetings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414494402074-k5hi53grp7tbqk99ptipr23rjvenqs92.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.planmymeetings",
+            "certificate_hash": "ade6dd9beba0226edeb8a5d02460c98126b45b1c"
+          }
+        },
+        {
+          "client_id": "414494402074-cq9arae35ktu28bjuhrhk2abc11v9qgt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRfLxnutp5W1W8TDdCNUfgivyvk5rVJbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414494402074-cq9arae35ktu28bjuhrhk2abc11v9qgt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

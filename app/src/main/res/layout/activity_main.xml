@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#151515"-->
+<!--    tools:context=".MainActivity">-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:theme="@style/Theme.PlanMyMeetings"
+    android:background="@color/background_color"
+    tools:context=".MainActivity"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="270dp"
+        android:layout_height="513dp"
+        app:srcCompat="@drawable/logo_with_text" />
+
+    <Button
+        android:text="@string/register"
+        style="@style/MainButtonStyle"
+        android:onClick="register"
+        />
+
+    <Button
+        android:text="@string/login"
+        style="@style/MainButtonStyle"
+        android:layout_margin="5dp"
+        />
+
+</LinearLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
