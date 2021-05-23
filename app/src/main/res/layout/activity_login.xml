@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center"
-    android:theme="@style/Theme.PlanMyMeetings"
-    android:background="@color/background_color"
-    tools:context=".LoginActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        style="@style/TitleText"
-        android:text="@string/login"
-        />
+    <data>
 
-    <EditText
-        android:id="@+id/emailEditText"
-        style="@style/AuthInputField"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        tools:ignore="Autofill" />
+        <variable
+            name="loginViewModel"
+            type="com.example.planmymeetings.screens.login.LoginViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        style="@style/AuthInputField"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        tools:ignore="Autofill" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:theme="@style/Theme.PlanMyMeetings"
+        tools:context=".screens.login.LoginActivity">
 
-    <Button
-        style="@style/MainButtonStyle"
-        android:text="@string/login"
-        android:layout_marginTop="30dp"
-        android:onClick="login"
-        />
+        <TextView
+            style="@style/TitleText"
+            android:text="@string/login" />
 
-    <Button
-        style="@style/MainButtonStyle"
-        android:text="@string/cancel"
-        android:layout_marginTop="10dp"
-        android:onClick="cancel"
-        />
+        <EditText
+            android:id="@+id/emailEditText"
+            style="@style/AuthInputField"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:text="@={loginViewModel.email}"
+            tools:ignore="Autofill" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/passwordEditText"
+            style="@style/AuthInputField"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={loginViewModel.password}"
+            tools:ignore="Autofill" />
+
+        <Button
+            style="@style/MainButtonStyle"
+            android:layout_marginTop="30dp"
+            android:onClick="@{() -> loginViewModel.login()}"
+            android:text="@string/login" />
+
+        <Button
+            style="@style/MainButtonStyle"
+            android:layout_marginTop="10dp"
+            android:onClick="cancel"
+            android:text="@string/cancel" />
+
+    </LinearLayout>
+</layout>
