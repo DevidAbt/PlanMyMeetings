@@ -49,7 +49,7 @@
         style="@style/MainButtonStyle"
         android:text="@string/register"
         android:layout_marginTop="30dp"
-        android:onClick="gotoRegister"
+        android:onClick="register"
         />
 
     <Button

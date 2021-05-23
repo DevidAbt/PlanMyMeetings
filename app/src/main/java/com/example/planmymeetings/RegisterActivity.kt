@@ -37,7 +37,8 @@ class RegisterActivity : AppCompatActivity() {
 
     fun register(view: View) {
         if (userNameEditText.text.isEmpty() || emailEditText.text.isEmpty() ||
-                passwordEditText.text.isEmpty() || passwordAgainEditText.text.isEmpty()) {
+            passwordEditText.text.isEmpty() || passwordAgainEditText.text.isEmpty()
+        ) {
             Toast.makeText(this, "You must fill all fields.", Toast.LENGTH_SHORT).show()
             return
         }
@@ -56,6 +57,7 @@ class RegisterActivity : AppCompatActivity() {
                 val successText = "User created successfully."
                 Log.d(LOG_TAG, successText)
                 Toast.makeText(this, successText, Toast.LENGTH_SHORT).show()
+                finish()
             } else {
                 val errorText = "User creation failed (${it.exception?.message})."
                 Log.d(LOG_TAG, errorText)
