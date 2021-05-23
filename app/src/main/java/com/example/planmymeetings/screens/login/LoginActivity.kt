@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.planmymeetings.R
-import com.example.planmymeetings.RegisterActivity
+import com.example.planmymeetings.screens.register.RegisterActivity
 import com.example.planmymeetings.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

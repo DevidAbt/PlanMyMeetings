@@ -1,62 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center"
-    android:theme="@style/Theme.PlanMyMeetings"
-    android:background="@color/background_color"
-    tools:context=".RegisterActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        style="@style/TitleText"
-        android:text="@string/register"
-        />
+    <data>
 
-    <EditText
-        android:id="@+id/userNameEditText"
-        style="@style/AuthInputField"
-        android:inputType="textPersonName"
-        android:hint="@string/username"
-        tools:ignore="Autofill" />
+        <variable
+            name="registerViewModel"
+            type="com.example.planmymeetings.screens.register.RegisterViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/emailEditText"
-        style="@style/AuthInputField"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        tools:ignore="Autofill" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:theme="@style/Theme.PlanMyMeetings"
+        tools:context=".screens.register.RegisterActivity">
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        style="@style/AuthInputField"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        tools:ignore="Autofill" />
+        <TextView
+            style="@style/TitleText"
+            android:text="@string/register" />
 
-    <EditText
-        android:id="@+id/passwordAgainEditText"
-        style="@style/AuthInputField"
-        android:inputType="textPassword"
-        android:hint="@string/password_again"
-        tools:ignore="Autofill"
-        android:layout_marginBottom="50dp"
-        />
+        <EditText
+            android:id="@+id/userNameEditText"
+            style="@style/AuthInputField"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:text="@={registerViewModel.username}"
+            tools:ignore="Autofill" />
 
-    <Button
-        style="@style/MainButtonStyle"
-        android:text="@string/register"
-        android:layout_marginTop="30dp"
-        android:onClick="register"
-        />
+        <EditText
+            android:id="@+id/emailEditText"
+            style="@style/AuthInputField"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:text="@={registerViewModel.email}"
+            tools:ignore="Autofill" />
 
-    <Button
-        style="@style/MainButtonStyle"
-        android:text="@string/cancel"
-        android:layout_marginTop="10dp"
-        android:onClick="cancel"
-        />
+        <EditText
+            android:id="@+id/passwordEditText"
+            style="@style/AuthInputField"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={registerViewModel.password}"
+            tools:ignore="Autofill" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/passwordAgainEditText"
+            style="@style/AuthInputField"
+            android:layout_marginBottom="50dp"
+            android:hint="@string/password_again"
+            android:inputType="textPassword"
+            android:text="@={registerViewModel.passwordAgain}"
+            tools:ignore="Autofill" />
+
+        <Button
+            style="@style/MainButtonStyle"
+            android:layout_marginTop="30dp"
+            android:onClick="@{() -> registerViewModel.register()}"
+            android:text="@string/register" />
+
+        <Button
+            style="@style/MainButtonStyle"
+            android:layout_marginTop="10dp"
+            android:onClick="cancel"
+            android:text="@string/cancel" />
+
+    </LinearLayout>
+</layout>

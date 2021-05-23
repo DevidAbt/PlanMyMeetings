@@ -6,6 +6,7 @@ import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.example.planmymeetings.screens.login.LoginActivity
+import com.example.planmymeetings.screens.register.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     private val LOG_TAG = MainActivity::class.java.name
