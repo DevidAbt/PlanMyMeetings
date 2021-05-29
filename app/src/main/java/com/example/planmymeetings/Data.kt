@@ -24,7 +24,7 @@ data class Appointment(
 //    val calendarEvent: CalendarEventRef?,
     val note: List<Note>,
 //    val relatedEntity: List<RelatedEntity>,
-    val attachment: List<AttachmentRefOrValue>,
+//    val attachment: List<AttachmentRefOrValue>,
 //    val contactMedium: List<ContactMedium>,
 //    val relatedParty: List<RelatedParty>,
     val relatedPlace: String?,
@@ -50,23 +50,23 @@ data class Note(
 //    val role: String,
 //)
 
-data class AttachmentRefOrValue(
-    val id: String,
-    val href: String,
-    val attachmentType: String,
-    val description: String,
-    val isRef: Boolean,
-    val mimeType: String,
-    val name: String,
-    val url: String,
-    val size: Quantity,
-    val validFor: Date,
-)
-
-data class Quantity(
-    val amount: Float,
-    val units: String,
-)
+//data class AttachmentRefOrValue(
+//    val id: String,
+//    val href: String,
+//    val attachmentType: String,
+//    val description: String,
+//    val isRef: Boolean,
+//    val mimeType: String,
+//    val name: String,
+//    val url: String,
+//    val size: Quantity,
+//    val validFor: Date,
+//)
+//
+//data class Quantity(
+//    val amount: Float,
+//    val units: String,
+//)
 
 //data class ContactMedium(
 //    val mediumType: String,

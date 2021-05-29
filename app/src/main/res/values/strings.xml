@@ -19,4 +19,6 @@
     <string name="format">%1$td/%1$tm/%1$tY</string>
     <string name="search">Search</string>
     <string name="logout">Log Out</string>
+    <string name="creation_date_text">Creation Date</string>
+    <string name="last_update_text">Last Update</string>
 </resources>

@@ -23,13 +23,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#292929"
+            android:background="@color/secondary_background_color"
             android:theme="@style/Theme.PlanMyMeetings">
 
             <TextView
                 android:id="@+id/validFor"
                 style="@style/AppointmentTextView"
-                app:formattedDate="@{appointment.validFor}"
+                app:formattedShortDate="@{appointment.validFor}"
                 tools:text="05.24. 12:00" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:id="@+id/creationDate"
                 style="@style/AppointmentTextView"
                 android:layout_below="@+id/description"
-                formattedDate="@{appointment.creationDate}"
+                formattedShortDate="@{appointment.creationDate}"
                 tools:text="05.24. 12:00" />
 
             <TextView
@@ -69,7 +69,7 @@
                 style="@style/AppointmentTextView"
                 android:layout_below="@id/description"
                 android:layout_alignParentEnd="true"
-                formattedDate="@{appointment.lastUpdate}"
+                formattedShortDate="@{appointment.lastUpdate}"
                 tools:text="05.24. 12:00" />
 
             <Button

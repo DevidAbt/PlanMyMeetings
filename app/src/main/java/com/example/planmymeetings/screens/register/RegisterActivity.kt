@@ -18,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
     private val LOG_TAG = RegisterActivity::class.java.name
-    private val PREF_KEY = RegisterActivity::class.java.`package`?.toString()
-    private val SECRET_KEY = 123;
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var viewModel: RegisterViewModel

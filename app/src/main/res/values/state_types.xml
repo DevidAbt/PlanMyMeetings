@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="state_types">
+        <item>initialized</item>
+        <item>confirmed</item>
+        <item>cancelled</item>
+        <item>completed</item>
+        <item>failed</item>
+    </string-array>
+</resources>

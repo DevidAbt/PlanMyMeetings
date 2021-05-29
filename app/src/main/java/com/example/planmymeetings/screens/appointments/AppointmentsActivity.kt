@@ -1,12 +1,13 @@
 package com.example.planmymeetings.screens.appointments
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuItemCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -14,13 +15,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.planmymeetings.Appointment
 import com.example.planmymeetings.AppointmentStateType
+import com.example.planmymeetings.MainActivity
 import com.example.planmymeetings.R
 import com.example.planmymeetings.databinding.ActivityAppointmentsBinding
-import com.example.planmymeetings.screens.register.RegisterActivity
+import com.example.planmymeetings.screens.appointment_details.AppointmentDetailsActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class AppointmentsActivity : AppCompatActivity() {
     private val LOG_TAG = AppointmentsActivity::class.java.name
@@ -59,7 +62,10 @@ class AppointmentsActivity : AppCompatActivity() {
         mItemList = ArrayList()
 
         mAdapter = AppointmentItemAdapter(this, mItemList, AppointmentListener {
-            Log.d(LOG_TAG, it)
+            Log.d(LOG_TAG, "clicked on item: $it")
+            val intent = Intent(this, AppointmentDetailsActivity::class.java)
+            intent.putExtra("appointmentId", it)
+            startActivity(intent)
         })
         mRecyclerView.adapter = mAdapter
 
@@ -79,7 +85,6 @@ class AppointmentsActivity : AppCompatActivity() {
                     Date(7483),
                     AppointmentStateType.initialized,
                     Date(8120),
-                    ArrayList(),
                     ArrayList(),
                     "place$i"
                 )
