@@ -22,7 +22,7 @@ data class Appointment(
     val validFor: Date,
 
 //    val calendarEvent: CalendarEventRef?,
-    val note: List<Note>,
+    val notes: List<Note>,
 //    val relatedEntity: List<RelatedEntity>,
 //    val attachment: List<AttachmentRefOrValue>,
 //    val contactMedium: List<ContactMedium>,

@@ -105,9 +105,18 @@
             android:id="@+id/textView2"
             style="@style/AppointmentTextView"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="55dp"
+            android:layout_marginEnd="65dp"
             android:text="@string/last_update_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notes_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="128dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

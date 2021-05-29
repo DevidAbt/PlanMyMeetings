@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="note"
+            type="com.example.planmymeetings.Note" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/secondary_background_color"
+            android:orientation="vertical"
+            android:theme="@style/Theme.PlanMyMeetings">
+
+            <TextView
+                style="@style/AppointmentTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="@{note.author}"
+                android:textAlignment="center"
+                tools:text="Alice" />
+
+            <TextView
+                style="@style/AppointmentTextView"
+                formattedShortDate="@{note.date}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:textAlignment="center"
+                tools:text="05.24. 12:30" />
+
+            <TextView
+                style="@style/AppointmentTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{note.text}"
+                android:textAlignment="center"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
