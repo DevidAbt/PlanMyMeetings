@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.planmymeetings.Appointment
 
-class AppointmentDetailsViewModel() : ViewModel(){
+class AppointmentDetailsViewModel : ViewModel() {
     private val _appointment = MutableLiveData<Appointment>()
     val appointment: LiveData<Appointment>
         get() = _appointment

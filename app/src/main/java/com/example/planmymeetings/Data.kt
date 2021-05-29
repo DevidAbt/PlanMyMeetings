@@ -1,6 +1,7 @@
 package com.example.planmymeetings
 
 import java.util.*
+import kotlin.collections.ArrayList
 
 enum class AppointmentStateType {
     initialized,
@@ -28,7 +29,9 @@ data class Appointment(
 //    val contactMedium: List<ContactMedium>,
 //    val relatedParty: List<RelatedParty>,
     val relatedPlace: String?,
-)
+) {
+    constructor(): this("", "", defaultDate, "", defaultDate, AppointmentStateType.initialized, defaultDate, defaultNotes, null)
+}
 
 //data class CalendarEventRef(
 //    val id: String,
@@ -127,3 +130,6 @@ data class TimeSlot(
 
 //    val relatedParty: RelatedParty?,
 )
+
+private val defaultDate = Date()
+private val defaultNotes = ArrayList<Note>()

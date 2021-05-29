@@ -48,30 +48,6 @@
                 tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                 />
 
-            <TextView
-                android:id="@+id/creationDate"
-                style="@style/AppointmentTextView"
-                android:layout_below="@+id/description"
-                formattedShortDate="@{appointment.creationDate}"
-                tools:text="05.24. 12:00" />
-
-            <TextView
-                android:id="@+id/status"
-                style="@style/AppointmentTextView"
-                android:layout_below="@+id/description"
-                android:layout_centerHorizontal="true"
-                android:text="@{appointment.status.toString()}"
-                tools:text="initialized"
-                />
-
-            <TextView
-                android:id="@+id/lastUpdate"
-                style="@style/AppointmentTextView"
-                android:layout_below="@id/description"
-                android:layout_alignParentEnd="true"
-                formattedShortDate="@{appointment.lastUpdate}"
-                tools:text="05.24. 12:00" />
-
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

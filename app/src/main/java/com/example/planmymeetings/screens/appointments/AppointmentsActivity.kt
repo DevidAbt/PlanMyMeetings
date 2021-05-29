@@ -13,10 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.planmymeetings.Appointment
-import com.example.planmymeetings.AppointmentStateType
-import com.example.planmymeetings.MainActivity
-import com.example.planmymeetings.R
+import com.example.planmymeetings.*
 import com.example.planmymeetings.databinding.ActivityAppointmentsBinding
 import com.example.planmymeetings.screens.appointment_details.AppointmentDetailsActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -69,29 +66,7 @@ class AppointmentsActivity : AppCompatActivity() {
         })
         mRecyclerView.adapter = mAdapter
 
-        initializeData()
-    }
-
-    private fun initializeData() {
-        mItemList.clear()
-
-        for (i in 1..30) {
-            mItemList.add(
-                Appointment(
-                    i.toString(),
-                    "meeting",
-                    Date(2021),
-                    "description$i",
-                    Date(7483),
-                    AppointmentStateType.initialized,
-                    Date(8120),
-                    ArrayList(),
-                    "place$i"
-                )
-            )
-        }
-
-        mAdapter.notifyDataSetChanged()
+        FirebaseService.queryData(mAdapter)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

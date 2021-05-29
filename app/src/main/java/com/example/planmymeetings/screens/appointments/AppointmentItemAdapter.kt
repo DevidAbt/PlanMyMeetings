@@ -20,8 +20,8 @@ class AppointmentItemAdapter(
     val appointmentListener: AppointmentListener
 ) :
     RecyclerView.Adapter<AppointmentItemAdapter.ViewHolder>(), Filterable {
-    private var mAppointmentItemsData: ArrayList<Appointment> = itemsData
-    private var mAppointmentItemsDataAll: ArrayList<Appointment> = itemsData
+    private var mAppointmentsData: ArrayList<Appointment> = itemsData
+    private var mAppointmentsDataAll: ArrayList<Appointment> = itemsData
     private var mContext: Context = context
     private var lastPosition: Int = -1
 
@@ -48,7 +48,7 @@ class AppointmentItemAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentItem = mAppointmentItemsData[position]
+        val currentItem = mAppointmentsData[position]
         holder.bindTo(currentItem, appointmentListener)
 
         if (holder.adapterPosition > lastPosition) {
@@ -59,7 +59,14 @@ class AppointmentItemAdapter(
     }
 
     override fun getItemCount(): Int {
-        return mAppointmentItemsData.size
+        return mAppointmentsData.size
+    }
+
+    fun updateData(appointments: ArrayList<Appointment>) {
+        mAppointmentsData = appointments
+        mAppointmentsDataAll = appointments
+        lastPosition = -1
+        notifyDataSetChanged()
     }
 
     private val appointmentFilter: Filter = object : Filter() {
@@ -68,12 +75,12 @@ class AppointmentItemAdapter(
             val results = FilterResults()
 
             if (charSequence.isNullOrEmpty()) {
-                results.count = mAppointmentItemsDataAll.size
-                results.values = mAppointmentItemsDataAll
+                results.count = mAppointmentsDataAll.size
+                results.values = mAppointmentsDataAll
             } else {
                 val filterPattern = charSequence.toString().toLowerCase(Locale.ROOT).trim()
 
-                mAppointmentItemsDataAll.forEach {
+                mAppointmentsDataAll.forEach {
                     if (it.category.toLowerCase(Locale.ROOT)
                             .contains(filterPattern) || it.description.toLowerCase(Locale.ROOT)
                             .contains(filterPattern)
@@ -90,7 +97,7 @@ class AppointmentItemAdapter(
         }
 
         override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults?) {
-            mAppointmentItemsData = filterResults!!.values as ArrayList<Appointment>
+            mAppointmentsData = filterResults!!.values as ArrayList<Appointment>
             notifyDataSetChanged()
         }
     }
