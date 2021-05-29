@@ -59,7 +59,7 @@ class AppointmentItemAdapter(
     }
 
     override fun getItemCount(): Int {
-        return mAppointmentItemsDataAll.size
+        return mAppointmentItemsData.size
     }
 
     private val appointmentFilter: Filter = object : Filter() {
@@ -68,7 +68,7 @@ class AppointmentItemAdapter(
             val results = FilterResults()
 
             if (charSequence.isNullOrEmpty()) {
-                results.count = 0
+                results.count = mAppointmentItemsDataAll.size
                 results.values = mAppointmentItemsDataAll
             } else {
                 val filterPattern = charSequence.toString().toLowerCase(Locale.ROOT).trim()

@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Debug
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.SearchView
+import androidx.core.view.MenuItemCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -83,5 +87,38 @@ class AppointmentsActivity : AppCompatActivity() {
         }
 
         mAdapter.notifyDataSetChanged()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.appointments_menu, menu)
+        val menuItem = menu?.findItem(R.id.search_bar)
+        if (menuItem != null) {
+            val searchView = MenuItemCompat.getActionView(menuItem) as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(s: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(s: String?): Boolean {
+                    mAdapter.filter.filter(s)
+                    return false
+                }
+            })
+        }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.log_out -> {
+                FirebaseAuth.getInstance().signOut()
+                finish()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 }

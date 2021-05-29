@@ -47,9 +47,10 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    fun gotoAppointments() {
+    private fun gotoAppointments() {
         val intent = Intent(this, AppointmentsActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     fun cancel(view: View) = finish()

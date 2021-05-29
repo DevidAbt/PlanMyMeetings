@@ -17,4 +17,6 @@
     <string name="details">Details</string>
     <string name="format_date">%1$tm.%1$td %1$tH:%1$tM</string>
     <string name="format">%1$td/%1$tm/%1$tY</string>
+    <string name="search">Search</string>
+    <string name="logout">Log Out</string>
 </resources>
