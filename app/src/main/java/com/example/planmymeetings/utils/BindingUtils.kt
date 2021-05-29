@@ -7,11 +7,13 @@ import com.example.planmymeetings.dateToShortString
 import java.util.*
 
 @BindingAdapter("formattedShortDate")
-fun TextView.setFormattedShortDate(date: Date) {
+fun TextView.setFormattedShortDate(date: Date?) {
+    if (date == null) return
     text = dateToShortString(date)
 }
 
 @BindingAdapter("formattedLongDate")
-fun TextView.setFormattedLongDate(date: Date) {
+fun TextView.setFormattedLongDate(date: Date?) {
+    if (date == null) return
     text = dateToLongString(date)
 }

@@ -107,6 +107,6 @@ class AppointmentItemAdapter(
     }
 }
 
-class AppointmentListener(val clickListener: (appointmentId: String) -> Unit) {
+class AppointmentListener(val clickListener: (appointmentId: Int) -> Unit) {
     fun onClick(appointment: Appointment) = clickListener(appointment.id)
 }
