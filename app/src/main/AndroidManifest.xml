@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanMyMeetings">
-        <activity android:name=".screens.login.LoginActivity"></activity>
+        <activity android:name=".screens.appointments.AppointmentsActivity"></activity>
+        <activity android:name=".screens.login.LoginActivity" />
         <activity android:name=".screens.register.RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

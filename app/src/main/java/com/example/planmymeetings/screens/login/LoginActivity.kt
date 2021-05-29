@@ -1,5 +1,6 @@
 package com.example.planmymeetings.screens.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.planmymeetings.R
 import com.example.planmymeetings.screens.register.RegisterActivity
 import com.example.planmymeetings.databinding.ActivityLoginBinding
+import com.example.planmymeetings.screens.appointments.AppointmentsActivity
 
 class LoginActivity : AppCompatActivity() {
     private val LOG_TAG = RegisterActivity::class.java.name
@@ -29,13 +31,25 @@ class LoginActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.loginViewModel = viewModel
 
-        viewModel.toastMessage.observe(this, Observer<String> {
+        viewModel.toastMessage.observe(this, {
             if (!it.isNullOrEmpty()) {
                 viewModel.resetToastMessage()
                 Log.d(LOG_TAG, it)
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
         })
+
+        viewModel.loggedInEvent.observe(this, {
+            if (it) {
+                viewModel.resetLoggedInEvent()
+                gotoAppointments()
+            }
+        })
+    }
+
+    fun gotoAppointments() {
+        val intent = Intent(this, AppointmentsActivity::class.java)
+        startActivity(intent)
     }
 
     fun cancel(view: View) = finish()

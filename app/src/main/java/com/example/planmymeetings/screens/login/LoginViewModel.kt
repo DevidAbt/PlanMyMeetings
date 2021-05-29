@@ -14,6 +14,10 @@ class LoginViewModel : ViewModel() {
     val toastMessage: LiveData<String>
         get() = _toastMessage
 
+    private val _loggedInEvent = MutableLiveData<Boolean>()
+    val loggedInEvent: LiveData<Boolean>
+        get() = _loggedInEvent
+
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun login() {
@@ -26,6 +30,7 @@ class LoginViewModel : ViewModel() {
             if (it.isSuccessful) {
                 val successText = "Logged in successfully."
                 _toastMessage.value = successText
+                _loggedInEvent.value = true
             } else {
                 val errorText = "Login failed (${it.exception?.message})."
                 _toastMessage.value = errorText
@@ -34,6 +39,10 @@ class LoginViewModel : ViewModel() {
     }
 
     fun resetToastMessage() {
+        _toastMessage.value = null;
+    }
+
+    fun resetLoggedInEvent() {
         _toastMessage.value = null;
     }
 }

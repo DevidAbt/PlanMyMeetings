@@ -12,29 +12,29 @@ enum class AppointmentStateType {
 
 data class Appointment(
     val id: String,
-    val href: String,
+//    val href: String,
     val category: String,
     val creationDate: Date,
     val description: String,
-    val externalId: String,
+//    val externalId: String,
     val lastUpdate: Date,
     val status: AppointmentStateType,
     val validFor: Date,
 
-    val calendarEvent: CalendarEventRef?,
+//    val calendarEvent: CalendarEventRef?,
     val note: List<Note>,
-    val relatedEntity: List<RelatedEntity>,
+//    val relatedEntity: List<RelatedEntity>,
     val attachment: List<AttachmentRefOrValue>,
-    val contactMedium: List<ContactMedium>,
-    val relatedParty: List<RelatedParty>,
-    val relatedPlace: RelatedPlaceRefOrValue?,
+//    val contactMedium: List<ContactMedium>,
+//    val relatedParty: List<RelatedParty>,
+    val relatedPlace: String?,
 )
 
-data class CalendarEventRef(
-    val id: String,
-    val href: String,
-    val name: String,
-)
+//data class CalendarEventRef(
+//    val id: String,
+//    val href: String,
+//    val name: String,
+//)
 
 data class Note(
     val id: String,
@@ -43,12 +43,12 @@ data class Note(
     val text: String,
 )
 
-data class RelatedEntity(
-    val id: String,
-    val href: String,
-    val name: String,
-    val role: String,
-)
+//data class RelatedEntity(
+//    val id: String,
+//    val href: String,
+//    val name: String,
+//    val role: String,
+//)
 
 data class AttachmentRefOrValue(
     val id: String,
@@ -68,42 +68,42 @@ data class Quantity(
     val units: String,
 )
 
-data class ContactMedium(
-    val mediumType: String,
-    val preferred: Boolean,
-    val validFor: Date,
+//data class ContactMedium(
+//    val mediumType: String,
+//    val preferred: Boolean,
+//    val validFor: Date,
+//
+//    val characteristic: MediumCharacteristic?,
+//)
 
-    val characteristic: MediumCharacteristic?,
-)
+//data class MediumCharacteristic(
+//    val city: String,
+//    val country: String,
+//    val emailAddress: String,
+//    val faxNumber: String,
+//    val phoneNumber: String,
+//    val postCode: String,
+//    val socialNetworkId: String,
+//    val stateOrProvince: String,
+//    val street1: String,
+//    val street2: String,
+//    val type: String,
+//)
 
-data class MediumCharacteristic(
-    val city: String,
-    val country: String,
-    val emailAddress: String,
-    val faxNumber: String,
-    val phoneNumber: String,
-    val postCode: String,
-    val socialNetworkId: String,
-    val stateOrProvince: String,
-    val street1: String,
-    val street2: String,
-    val type: String,
-)
+//data class RelatedParty(
+//    val id: String,
+//    val href: String,
+//    val name: String,
+//    val role: String,
+//)
 
-data class RelatedParty(
-    val id: String,
-    val href: String,
-    val name: String,
-    val role: String,
-)
-
-data class RelatedPlaceRefOrValue(
-    val id: String,
-    val href: String,
-    val isRef: Boolean,
-    val name: String,
-    val role: String,
-)
+//data class RelatedPlaceRefOrValue(
+//    val id: String,
+//    val href: String,
+//    val isRef: Boolean,
+//    val name: String,
+//    val role: String,
+//)
 
 
 data class SearchTimeSlot(
@@ -113,9 +113,9 @@ data class SearchTimeSlot(
     val searchResult: String,
     val status: String,
 
-    val relatedPlace: RelatedPlaceRefOrValue?,
-    val relatedEntity: List<RelatedEntity>,
-    val relatedParty: RelatedParty?,
+    val relatedPlace: String?,
+//    val relatedEntity: List<RelatedEntity>,
+//    val relatedParty: RelatedParty?,
     val requestedTimeSlot: List<TimeSlot>,
     val availableTimeSlot: List<TimeSlot>,
 )
@@ -125,5 +125,5 @@ data class TimeSlot(
     val href: String,
     val validFor: Date,
 
-    val relatedParty: RelatedParty?,
+//    val relatedParty: RelatedParty?,
 )

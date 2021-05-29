@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="appointment"
+            type="com.example.planmymeetings.Appointment" />
+
+        <variable
+            name="listener"
+            type="com.example.planmymeetings.screens.appointments.AppointmentListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginVertical="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#292929"
+            android:theme="@style/Theme.PlanMyMeetings">
+
+            <TextView
+                android:id="@+id/validFor"
+                style="@style/AppointmentTextView"
+                app:formattedDate="@{appointment.validFor}"
+                tools:text="05.24. 12:00" />
+
+            <TextView
+                android:id="@+id/category"
+                style="@style/AppointmentTextView"
+                android:layout_centerHorizontal="true"
+                android:text="@{appointment.category}"
+                tools:text="meeting"
+                />
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/AppointmentTextView"
+                android:layout_below="@+id/validFor"
+                android:text="@{appointment.description}"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                />
+
+            <TextView
+                android:id="@+id/creationDate"
+                style="@style/AppointmentTextView"
+                android:layout_below="@+id/description"
+                formattedDate="@{appointment.creationDate}"
+                tools:text="05.24. 12:00" />
+
+            <TextView
+                android:id="@+id/status"
+                style="@style/AppointmentTextView"
+                android:layout_below="@+id/description"
+                android:layout_centerHorizontal="true"
+                android:text="@{appointment.status.toString()}"
+                tools:text="initialized"
+                />
+
+            <TextView
+                android:id="@+id/lastUpdate"
+                style="@style/AppointmentTextView"
+                android:layout_below="@id/description"
+                android:layout_alignParentEnd="true"
+                formattedDate="@{appointment.lastUpdate}"
+                tools:text="05.24. 12:00" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:onClick="@{() -> listener.onClick(appointment)}"
+                android:text="@string/details" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
+

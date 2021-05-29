@@ -8,4 +8,13 @@
     <string name="password_again">password again</string>
     <string name="cancel">cancel</string>
     <string name="logo">logo</string>
+    <string name="category">category</string>
+    <string name="description">description</string>
+    <string name="valid_for">valid for</string>
+    <string name="status">status</string>
+    <string name="creation_date">creationDate</string>
+    <string name="last_update">lastUpdate</string>
+    <string name="details">Details</string>
+    <string name="format_date">%1$tm.%1$td %1$tH:%1$tM</string>
+    <string name="format">%1$td/%1$tm/%1$tY</string>
 </resources>
