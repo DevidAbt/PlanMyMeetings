@@ -3,8 +3,10 @@ package com.example.planmymeetings.screens.appointment_details
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.example.planmymeetings.Note
+import com.example.planmymeetings.R
 import com.example.planmymeetings.databinding.NoteItemBinding
 
 class NoteItemAdapter(
@@ -39,8 +41,11 @@ class NoteItemAdapter(
         val currentItem = mNoteItemData[position]
         holder.bindTo(currentItem)
 
-        // TODO: animation
-//        if (holder.)
+        if (holder.adapterPosition > lastPosition) {
+            val animation = AnimationUtils.loadAnimation(mContext, R.anim.lifting_up)
+            holder.itemView.startAnimation(animation)
+            lastPosition = holder.adapterPosition
+        }
     }
 
     override fun getItemCount(): Int {

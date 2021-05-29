@@ -34,11 +34,6 @@ class AppointmentDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(AppointmentDetailsViewModel::class.java)
         binding.viewModel = viewModel
 
-        val adapter: ArrayAdapter<CharSequence> =
-            ArrayAdapter.createFromResource(this, R.array.state_types, R.layout.state_spinner_item)
-        adapter.setDropDownViewResource(R.layout.state_spinner_dropdown_item)
-        binding.statusSpinner.adapter = adapter
-
         val layoutManager = LinearLayoutManager(this,  LinearLayoutManager.HORIZONTAL, false)
 
         mRecyclerView = binding.notesRecyclerView
@@ -46,6 +41,11 @@ class AppointmentDetailsActivity : AppCompatActivity() {
         mItemList = ArrayList()
         mAdapter = NoteItemAdapter(this, mItemList)
         mRecyclerView.adapter = mAdapter
+
+        val adapter: ArrayAdapter<CharSequence> =
+            ArrayAdapter.createFromResource(this, R.array.state_types, R.layout.state_spinner_item)
+        adapter.setDropDownViewResource(R.layout.state_spinner_dropdown_item)
+        binding.statusSpinner.adapter = adapter
 
         initializeData()
     }
