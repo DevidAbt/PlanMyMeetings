@@ -65,7 +65,7 @@ class AppointmentsActivity : AppCompatActivity() {
     private fun initializeData() {
         mItemList.clear()
 
-        for (i in 1..10) {
+        for (i in 1..30) {
             mItemList.add(
                 Appointment(
                     i.toString(),

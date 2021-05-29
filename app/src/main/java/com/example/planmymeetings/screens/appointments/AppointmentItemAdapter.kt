@@ -3,10 +3,12 @@ package com.example.planmymeetings.screens.appointments
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.planmymeetings.Appointment
+import com.example.planmymeetings.R
 import com.example.planmymeetings.databinding.AppointmentItemBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -48,6 +50,12 @@ class AppointmentItemAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = mAppointmentItemsData[position]
         holder.bindTo(currentItem, appointmentListener)
+
+        if (holder.adapterPosition > lastPosition) {
+            val animation = AnimationUtils.loadAnimation(mContext, R.anim.right_to_left)
+            holder.itemView.startAnimation(animation)
+            lastPosition = holder.adapterPosition
+        }
     }
 
     override fun getItemCount(): Int {
