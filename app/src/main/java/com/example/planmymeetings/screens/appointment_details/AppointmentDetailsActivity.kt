@@ -26,6 +26,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
     private lateinit var mAdapter: NoteItemAdapter
 
     private lateinit var mSpinnerAdapter: ArrayAdapter<CharSequence>
+    private val appointmentStateValues = AppointmentStateType.values()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,16 @@ class AppointmentDetailsActivity : AppCompatActivity() {
             ArrayAdapter.createFromResource(this, R.array.state_types, R.layout.state_spinner_item)
         mSpinnerAdapter.setDropDownViewResource(R.layout.state_spinner_dropdown_item)
         binding.statusSpinner.adapter = mSpinnerAdapter
+        binding.statusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                FirebaseService.upadteAppointmentStateById(appointmentId, appointmentStateValues[position].toString())
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // ignored
+            }
+
+        }
 
         fetchData(appointmentId)
     }

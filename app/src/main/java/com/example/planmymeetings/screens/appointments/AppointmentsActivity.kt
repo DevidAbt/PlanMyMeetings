@@ -63,13 +63,8 @@ class AppointmentsActivity : AppCompatActivity() {
             val intent = Intent(this, AppointmentDetailsActivity::class.java)
             intent.putExtra("appointmentId", it)
             startActivity(intent)
-        }, { appointmentId ->
-            FirebaseService.getAppointmentById(appointmentId).onSuccessTask { querySnapshot ->
-                querySnapshot?.documents?.first()?.reference!!.delete().addOnSuccessListener {
-                    FirebaseService.queryData(mAdapter)
-                    Log.d(LOG_TAG, "appointment removed ($appointmentId)")
-                }
-            }
+        }, {
+            FirebaseService.removeAppointmentById(it, mAdapter)
         }))
         mRecyclerView.adapter = mAdapter
 

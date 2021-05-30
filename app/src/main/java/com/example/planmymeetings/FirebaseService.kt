@@ -73,4 +73,21 @@ object FirebaseService {
     fun getAppointmentById(id: Int): Task<QuerySnapshot> {
         return mAppointmentRefs.whereEqualTo("id", id).limit(1).get()
     }
+
+    fun removeAppointmentById(id: Int, adapter: AppointmentItemAdapter) {
+        getAppointmentById(id).onSuccessTask { querySnapshot ->
+            querySnapshot?.documents?.first()?.reference!!.delete().addOnSuccessListener {
+                queryData(adapter)
+                Log.d(LOG_TAG, "appointment removed ($id)")
+            }
+        }
+    }
+
+    fun upadteAppointmentStateById(id: Int, stateString: String) {
+        getAppointmentById(id).onSuccessTask {
+            it?.documents?.first()?.reference!!.update("status", stateString).addOnSuccessListener {
+                Log.d(LOG_TAG, "appointment updated ($id, $stateString)")
+            }
+        }
+    }
 }
