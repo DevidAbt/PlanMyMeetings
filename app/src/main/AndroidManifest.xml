@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanMyMeetings">
-        <activity android:name=".screens.add_note.AddNoteActivity"></activity>
-        <activity android:name=".screens.add_appointment.AddAppointmentActivity" />
-        <activity android:name=".screens.appointment_details.AppointmentDetailsActivity" />
+        <activity android:name=".screens.add_note.AddNoteActivity" />
+        <activity android:name=".screens.add_appointment.AddAppointmentActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".screens.appointment_details.AppointmentDetailsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".screens.appointments.AppointmentsActivity" />
         <activity android:name=".screens.login.LoginActivity" />
-        <activity android:name=".screens.register.RegisterActivity" />
+        <activity android:name=".screens.register.RegisterActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
