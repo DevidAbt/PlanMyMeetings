@@ -1,0 +1,36 @@
+- Adatmodell definiálása (json file-ban vagy class formájában)
+    - Data.kt
+- Legalább 3 különböző activity használata
+    - 6 darab van
+- Legalább 5 különböző GUI elem használata
+    - TextView
+    - EditText
+    - Spinner
+    - RecyclerView
+    - Button
+    - ImageView
+    - ImageButton
+    - CardView
+    - stb...
+- Legalább 3 különböző layout típus használata
+    - LinearLayout
+    - ConstraintLayout
+    - RelativeLayout
+- Reszponzív, különböző kijelző méreteken is jól jelennek meg a GUI elemek (akár tableten is)
+    - portré módban mindegyik működik kis és nagy kijelzőkön is (amin itthon ki tudtam próbálniÖ
+    - a MainActivity-hez csináltam külön horizontális layout-ot is, de pl. az AddNoteActivity vagy az AppointmentsActivity is tökéletesen néz ki fekve is, a többiben pedig letiltottam ezt az opciót a mainfest fájlban
+- Legalább 2 különböző animáció használata
+    - anim/right_to_left
+    - anim/lifting_up
+- Intentek használata
+    - Ezekkel váltok az activity-k közt, de a NotificationUtil-ban használok PendingIntent-et is
+- Legalább 3 különböző Lifecycle Hook használata a teljes projektben
+    - pl. onCreate, onDestroy, onResume az AddAppointmentActivity-ben
+- Legalább egy olyan androidos erőforrás használata, amihez kell android permission
+    - ACCESS_FINE_LOCATION és LocationManager szintén az AddAppointmentActivity-ben
+- Legalább egy notification vagy alam manager vagy job scheduler használata
+    - AddAppointmentActivity, NotificationUtil
+- CRUD műveletek mindegyike megvalósult és műveletek service-(ek)be vannak kiszervezve (AsyncTasks)
+    - FirebaseService-be vannak kiszervezve, minden művelet megvalósul
+- Legalább 2 komplex Firestore lekérdezés megvalósítása, amely indexet igényel (ide tartoznak: where feltétel, rendezés, léptetés, limitálás)
+    - pl.: queryData, getAppointmentById, removeNote metódusokban a FirebaseService-ben
