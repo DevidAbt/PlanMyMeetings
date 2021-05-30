@@ -2,6 +2,7 @@ package com.example.planmymeetings.screens.appointment_details
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -23,6 +24,8 @@ class AppointmentDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAppointmentDetailsBinding
 
+    private var appointmentId: Int = -1
+
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mItemList: ArrayList<Note>
     private lateinit var mAdapter: NoteItemAdapter
@@ -33,7 +36,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val appointmentId: Int = intent.getIntExtra("appointmentId", -1)
+        appointmentId = intent.getIntExtra("appointmentId", -1)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_appointment_details)
         binding.executePendingBindings()
@@ -64,6 +67,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
                     appointmentStateValues[position].toString()
                 )
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // ignored
             }
@@ -75,10 +79,10 @@ class AppointmentDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        fetchData(appointmentId)
+        fetchData()
     }
 
-    private fun fetchData(appointmentId: Int) {
+    private fun fetchData() {
         FirebaseService.getAppointmentById(appointmentId).addOnSuccessListener {
             val appointment = it.toObjects(Appointment::class.java)[0]
             binding.validForText.text = dateToLongString(appointment.validFor)
@@ -100,5 +104,18 @@ class AppointmentDetailsActivity : AppCompatActivity() {
     private fun setSpinner(state: AppointmentStateType) {
         val spinnerPosition = mSpinnerAdapter.getPosition(state.toString())
         binding.statusSpinner.setSelection(spinnerPosition)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.notes_menu, menu)
+
+        menu?.findItem(R.id.refresh_bar)?.setOnMenuItemClickListener {
+            fetchData()
+            mAdapter.notifyDataSetChanged()
+            true
+        }
+
+        return true
     }
 }
