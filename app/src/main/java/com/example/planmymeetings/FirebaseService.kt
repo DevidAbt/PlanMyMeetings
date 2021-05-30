@@ -3,9 +3,11 @@ package com.example.planmymeetings
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.planmymeetings.screens.appointment_details.NoteItemAdapter
 import com.example.planmymeetings.screens.appointments.AppointmentItemAdapter
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.util.*
@@ -89,5 +91,26 @@ object FirebaseService {
                 Log.d(LOG_TAG, "appointment updated ($id, $stateString)")
             }
         }
+    }
+
+    fun removeNote(note: Note, items: ArrayList<Note>, adapter: NoteItemAdapter) {
+        mAppointmentRefs.whereArrayContains("notes", note).get()
+            .addOnSuccessListener { querySnapshot ->
+                for (document in querySnapshot.documents) {
+                    Log.d(
+                        LOG_TAG,
+                        "appointments with noteId: ${document.toObject(Appointment::class.java)!!.id}"
+                    )
+                    val appointment = document.toObject(Appointment::class.java)
+                    val newNotes = appointment?.notes?.filter { it.id != note.id }
+                    items.clear()
+                    for (newNote in newNotes!!) {
+                        items.add(newNote)
+                        adapter.notifyDataSetChanged()
+                    }
+                    document.reference.update("notes", newNotes).addOnSuccessListener {
+                    }
+                }
+            }
     }
 }

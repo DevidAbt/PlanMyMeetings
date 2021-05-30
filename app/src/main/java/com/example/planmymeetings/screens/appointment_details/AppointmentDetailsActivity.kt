@@ -34,13 +34,16 @@ class AppointmentDetailsActivity : AppCompatActivity() {
         val appointmentId: Int = intent.getIntExtra("appointmentId", -1)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_appointment_details)
+        binding.executePendingBindings()
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         mRecyclerView = binding.notesRecyclerView
         mRecyclerView.layoutManager = layoutManager
         mItemList = ArrayList()
-        mAdapter = NoteItemAdapter(this, mItemList)
+        mAdapter = NoteItemAdapter(this, mItemList, NoteListener {
+            FirebaseService.removeNote(it, mItemList, mAdapter)
+        })
         mRecyclerView.adapter = mAdapter
 
         mSpinnerAdapter =
@@ -48,8 +51,16 @@ class AppointmentDetailsActivity : AppCompatActivity() {
         mSpinnerAdapter.setDropDownViewResource(R.layout.state_spinner_dropdown_item)
         binding.statusSpinner.adapter = mSpinnerAdapter
         binding.statusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                FirebaseService.upadteAppointmentStateById(appointmentId, appointmentStateValues[position].toString())
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                FirebaseService.upadteAppointmentStateById(
+                    appointmentId,
+                    appointmentStateValues[position].toString()
+                )
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

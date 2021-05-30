@@ -11,7 +11,8 @@ import com.example.planmymeetings.databinding.NoteItemBinding
 
 class NoteItemAdapter(
     context: Context,
-    itemsData: ArrayList<Note>
+    itemsData: ArrayList<Note>,
+    private val noteListener: NoteListener
 ) : RecyclerView.Adapter<NoteItemAdapter.ViewHolder>() {
     private var mNoteItemData: ArrayList<Note> = itemsData
     private var mContext: Context = context
@@ -19,8 +20,9 @@ class NoteItemAdapter(
 
     class ViewHolder private constructor(val binding: NoteItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bindTo(note: Note) {
+        fun bindTo(note: Note, noteListener: NoteListener) {
             binding.note = note
+            binding.listener = noteListener
             binding.executePendingBindings()
         }
 
@@ -39,7 +41,7 @@ class NoteItemAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = mNoteItemData[position]
-        holder.bindTo(currentItem)
+        holder.bindTo(currentItem, noteListener)
 
         if (holder.adapterPosition > lastPosition) {
             val animation = AnimationUtils.loadAnimation(mContext, R.anim.lifting_up)
@@ -51,4 +53,10 @@ class NoteItemAdapter(
     override fun getItemCount(): Int {
         return mNoteItemData.size
     }
+}
+
+class NoteListener(
+    private val removeClickListener: (note: Note) -> Unit
+) {
+   fun onRemoveClick(note: Note) = removeClickListener(note)
 }

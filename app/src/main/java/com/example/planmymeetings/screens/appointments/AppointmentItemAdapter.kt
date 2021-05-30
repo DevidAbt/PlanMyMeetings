@@ -19,7 +19,7 @@ import kotlin.collections.ArrayList
 class AppointmentItemAdapter(
     context: Context,
     itemsData: ArrayList<Appointment>,
-    val appointmentListener: AppointmentListener
+    private val appointmentListener: AppointmentListener
 ) :
     RecyclerView.Adapter<AppointmentItemAdapter.ViewHolder>(), Filterable {
     private var mAppointmentsData: ArrayList<Appointment> = itemsData
