@@ -1,4 +1,4 @@
-package com.example.planmymeetings.screens.add_note
+package com.example.planmymeetings.screens.add_appointment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.planmymeetings.Appointment
 import com.example.planmymeetings.AppointmentStateType
 import com.example.planmymeetings.FirebaseService
-import com.example.planmymeetings.Note
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*

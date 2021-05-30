@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.planmymeetings.*
 import com.example.planmymeetings.databinding.ActivityAppointmentsBinding
-import com.example.planmymeetings.screens.add_note.AddAppointmentActivity
+import com.example.planmymeetings.screens.add_appointment.AddAppointmentActivity
 import com.example.planmymeetings.screens.appointment_details.AppointmentDetailsActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

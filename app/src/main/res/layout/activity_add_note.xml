@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.planmymeetings.screens.add_appointment.AddAppointmentViewModel" />
+            type="com.example.planmymeetings.screens.add_note.AddNoteViewModel" />
     </data>
 
     <LinearLayout
@@ -22,46 +22,22 @@
         <TextView
             style="@style/TitleText"
             android:textAlignment="center"
-            android:text="@string/add_appointment" />
+            android:text="@string/add_note" />
 
         <EditText
-            android:id="@+id/idEdit"
+            android:id="@+id/noteId"
             style="@style/AuthInputField"
-            android:hint="@string/appointment_number"
+            android:hint="@string/note_number"
             android:inputType="number"
             android:text="@={viewModel.id}"
             tools:ignore="Autofill" />
 
         <EditText
-            android:id="@+id/validForEdit"
+            android:id="@+id/noteText"
             style="@style/AuthInputField"
-            android:hint="@string/valid_for2"
+            android:hint="@string/text"
             android:inputType="text"
-            android:text="@={viewModel.validFor}"
-            tools:ignore="Autofill" />
-
-        <EditText
-            android:id="@+id/categoryEdit"
-            style="@style/AuthInputField"
-            android:hint="@string/category2"
-            android:inputType="text"
-            android:text="@={viewModel.category}"
-            tools:ignore="Autofill" />
-
-        <EditText
-            android:id="@+id/descriptionEdit"
-            style="@style/AuthInputField"
-            android:hint="@string/description2"
-            android:inputType="text"
-            android:text="@={viewModel.description}"
-            tools:ignore="Autofill" />
-
-        <EditText
-            android:id="@+id/relatedPlaceEdit"
-            style="@style/AuthInputField"
-            android:hint="@string/related_place"
-            android:inputType="text"
-            android:text="@={viewModel.relatedPlace}"
+            android:text="@={viewModel.text}"
             tools:ignore="Autofill" />
 
         <Button

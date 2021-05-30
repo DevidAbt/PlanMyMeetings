@@ -1,4 +1,4 @@
-package com.example.planmymeetings.screens.add_note
+package com.example.planmymeetings.screens.add_appointment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,9 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.planmymeetings.R
 import com.example.planmymeetings.databinding.ActivityAddAppointmentBinding
-import com.example.planmymeetings.databinding.ActivityRegisterBinding
-import com.example.planmymeetings.screens.register.RegisterActivity
-import com.example.planmymeetings.screens.register.RegisterViewModel
 
 class AddAppointmentActivity : AppCompatActivity() {
     private val LOG_TAG = AddAppointmentActivity::class.java.name

@@ -122,4 +122,19 @@ object FirebaseService {
             )
         }
     }
+
+    fun addNoteToAppointment(appointmentId: Int, note: Note) {
+        getAppointmentById(appointmentId).addOnSuccessListener {
+            var notes = it.toObjects(Appointment::class.java)[0].notes
+            val mutableNotes = notes.toMutableList()
+            mutableNotes.add(note)
+            notes = mutableNotes
+            it?.documents?.first()?.reference!!.update("notes", notes).addOnSuccessListener {
+                Log.d(
+                    LOG_TAG,
+                    "note added ($note.id)"
+                )
+            }
+        }
+    }
 }

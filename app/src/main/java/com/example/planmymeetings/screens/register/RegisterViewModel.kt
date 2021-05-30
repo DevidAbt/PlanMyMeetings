@@ -1,12 +1,11 @@
 package com.example.planmymeetings.screens.register
 
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+
 
 class RegisterViewModel : ViewModel() {
     val username = MutableLiveData<String>()
@@ -39,6 +38,11 @@ class RegisterViewModel : ViewModel() {
 
         mAuth.createUserWithEmailAndPassword(email.value!!, password.value!!)
             .addOnCompleteListener {
+                it.addOnSuccessListener { authResult ->
+                    val profileUpdates =
+                        UserProfileChangeRequest.Builder().setDisplayName(username.value).build()
+                    authResult.user!!.updateProfile(profileUpdates)
+                }
                 if (it.isSuccessful) {
                     val successText = "User created successfully."
                     _toastMessage.value = successText

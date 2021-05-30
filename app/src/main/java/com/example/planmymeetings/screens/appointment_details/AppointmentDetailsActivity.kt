@@ -1,5 +1,6 @@
 package com.example.planmymeetings.screens.appointment_details
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.planmymeetings.*
 import com.example.planmymeetings.databinding.ActivityAppointmentDetailsBinding
+import com.example.planmymeetings.screens.add_note.AddNoteActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -62,11 +64,15 @@ class AppointmentDetailsActivity : AppCompatActivity() {
                     appointmentStateValues[position].toString()
                 )
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // ignored
             }
+        }
 
+        binding.addNoteButton.setOnClickListener {
+            val intent = Intent(this, AddNoteActivity::class.java)
+            intent.putExtra("appointmentId", appointmentId)
+            startActivity(intent)
         }
 
         fetchData(appointmentId)

@@ -32,4 +32,6 @@
     <string name="add_appointment">Add Appointment</string>
     <string name="add">add</string>
     <string name="refresh">Refresh</string>
+    <string name="note_number">Note Number</string>
+    <string name="text">Text</string>
 </resources>
