@@ -25,7 +25,6 @@ class AppointmentsActivity : AppCompatActivity() {
     private val LOG_TAG = AppointmentsActivity::class.java.name
 
     private lateinit var binding: ActivityAppointmentsBinding
-    private lateinit var viewModel: AppointmentsViewModel
 
     private lateinit var user: FirebaseUser
     private lateinit var mAuth: FirebaseAuth
@@ -40,9 +39,6 @@ class AppointmentsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_appointments)
-
-        viewModel = ViewModelProvider(this).get(AppointmentsViewModel::class.java)
-        binding.viewModel = viewModel
 
         mAuth = FirebaseAuth.getInstance()
         if (mAuth.currentUser != null) {
