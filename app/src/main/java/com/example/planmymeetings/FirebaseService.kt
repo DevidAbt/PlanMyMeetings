@@ -13,6 +13,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 object FirebaseService {
     private val LOG_TAG = FirebaseService::class.java.name
@@ -85,9 +86,12 @@ object FirebaseService {
         }
     }
 
-    fun upadteAppointmentStateById(id: Int, stateString: String) {
+    fun updateAppointmentStateById(id: Int, stateString: String) {
         getAppointmentById(id).onSuccessTask {
-            it?.documents?.first()?.reference!!.update("status", stateString).addOnSuccessListener {
+            val updateMap = HashMap<String, Any>()
+            updateMap["status"] = stateString
+            updateMap["lastUpdate"] = Calendar.getInstance().time
+            it?.documents?.first()?.reference!!.update(updateMap).addOnSuccessListener {
                 Log.d(LOG_TAG, "appointment updated ($id, $stateString)")
             }
         }

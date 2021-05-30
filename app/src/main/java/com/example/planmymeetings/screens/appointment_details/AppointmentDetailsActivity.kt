@@ -6,17 +6,13 @@ import android.view.Menu
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.planmymeetings.*
 import com.example.planmymeetings.databinding.ActivityAppointmentDetailsBinding
 import com.example.planmymeetings.screens.add_note.AddNoteActivity
-import java.util.*
 import kotlin.collections.ArrayList
 
 class AppointmentDetailsActivity : AppCompatActivity() {
@@ -25,6 +21,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAppointmentDetailsBinding
 
     private var appointmentId: Int = -1
+    private var appointment: Appointment? = null
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mItemList: ArrayList<Note>
@@ -62,9 +59,11 @@ class AppointmentDetailsActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                FirebaseService.upadteAppointmentStateById(
+                val newStateString = appointmentStateValues[position].toString()
+                if (appointment != null && newStateString != appointment!!.status.toString())
+                FirebaseService.updateAppointmentStateById(
                     appointmentId,
-                    appointmentStateValues[position].toString()
+                    newStateString
                 )
             }
 
@@ -84,17 +83,17 @@ class AppointmentDetailsActivity : AppCompatActivity() {
 
     private fun fetchData() {
         FirebaseService.getAppointmentById(appointmentId).addOnSuccessListener {
-            val appointment = it.toObjects(Appointment::class.java)[0]
-            binding.validForText.text = dateToLongString(appointment.validFor)
-            binding.relatedPlaceText.text = appointment.relatedPlace
-            binding.categoryText.text = appointment.category
-            binding.descriptionText.text = appointment.description
-            binding.creationDateText.text = dateToLongString(appointment.creationDate)
-            binding.lastUpdateText.text = dateToLongString(appointment.lastUpdate)
-            setSpinner(appointment.status)
+            appointment = it.toObjects(Appointment::class.java)[0]
+            binding.validForText.text = dateToLongString(appointment!!.validFor)
+            binding.relatedPlaceText.text = appointment!!.relatedPlace
+            binding.categoryText.text = appointment!!.category
+            binding.descriptionText.text = appointment!!.description
+            binding.creationDateText.text = dateToLongString(appointment!!.creationDate)
+            binding.lastUpdateText.text = dateToLongString(appointment!!.lastUpdate)
+            setSpinner(appointment!!.status)
 
             mItemList.clear()
-            for (note in appointment.notes) {
+            for (note in appointment!!.notes) {
                 mItemList.add(note)
             }
             mAdapter.notifyDataSetChanged()
