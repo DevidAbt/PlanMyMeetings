@@ -16,10 +16,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.planmymeetings.R
 import com.example.planmymeetings.databinding.ActivityAddAppointmentBinding
 import com.example.planmymeetings.utils.NotificationUtil
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class AddAppointmentActivity : AppCompatActivity() {
     private val LOG_TAG = AddAppointmentActivity::class.java.name
+
+    private lateinit var user: FirebaseUser
+    private lateinit var mAuth: FirebaseAuth
 
     private lateinit var binding: ActivityAddAppointmentBinding
     private lateinit var viewModel: AddAppointmentViewModel
@@ -35,6 +40,15 @@ class AddAppointmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide();
+
+        mAuth = FirebaseAuth.getInstance()
+        if (mAuth.currentUser != null) {
+            user = mAuth.currentUser!!
+            Log.d(LOG_TAG, "Authenticated user")
+        } else {
+            Log.d(LOG_TAG, "Unauthenticated user")
+            finish()
+        }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_appointment)
 

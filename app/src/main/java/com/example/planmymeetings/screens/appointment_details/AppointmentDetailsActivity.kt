@@ -2,6 +2,7 @@ package com.example.planmymeetings.screens.appointment_details
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.AdapterView
@@ -13,10 +14,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.planmymeetings.*
 import com.example.planmymeetings.databinding.ActivityAppointmentDetailsBinding
 import com.example.planmymeetings.screens.add_note.AddNoteActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlin.collections.ArrayList
 
 class AppointmentDetailsActivity : AppCompatActivity() {
     private val LOG_TAG = AppointmentDetailsActivity::class.java.name
+
+    private lateinit var user: FirebaseUser
+    private lateinit var mAuth: FirebaseAuth
 
     private lateinit var binding: ActivityAppointmentDetailsBinding
 
@@ -32,6 +38,15 @@ class AppointmentDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        mAuth = FirebaseAuth.getInstance()
+        if (mAuth.currentUser != null) {
+            user = mAuth.currentUser!!
+            Log.d(LOG_TAG, "Authenticated user")
+        } else {
+            Log.d(LOG_TAG, "Unauthenticated user")
+            finish()
+        }
 
         appointmentId = intent.getIntExtra("appointmentId", -1)
 
