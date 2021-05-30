@@ -7,12 +7,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.planmymeetings.R
 import com.example.planmymeetings.databinding.ActivityAddAppointmentBinding
+import com.example.planmymeetings.utils.NotificationUtil
 
 class AddAppointmentActivity : AppCompatActivity() {
     private val LOG_TAG = AddAppointmentActivity::class.java.name
 
     private lateinit var binding: ActivityAddAppointmentBinding
     private lateinit var viewModel: AddAppointmentViewModel
+
+    private lateinit var notificationUtil: NotificationUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,5 +32,17 @@ class AddAppointmentActivity : AppCompatActivity() {
                 finish()
             }
         })
+
+        notificationUtil = NotificationUtil(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        notificationUtil.send("Add appointment")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        notificationUtil.cancel()
     }
 }
