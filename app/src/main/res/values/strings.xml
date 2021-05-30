@@ -29,7 +29,7 @@
     <string name="description2">Description</string>
     <string name="category2">Category</string>
     <string name="valid_for2">Valid For</string>
-    <string name="add_appointment">Add Appointment</string>
+    <string name="add_appointment">Add\n Appointment</string>
     <string name="add">add</string>
     <string name="refresh">Refresh</string>
     <string name="note_number">Note Number</string>

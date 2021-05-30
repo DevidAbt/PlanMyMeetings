@@ -103,11 +103,8 @@ class AppointmentsActivity : AppCompatActivity() {
                 true
             }
             R.id.add_appointment_bar -> {
-                item.setOnMenuItemClickListener {
-                    val intent = Intent(this, AddAppointmentActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
+                val intent = Intent(this, AddAppointmentActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> {
