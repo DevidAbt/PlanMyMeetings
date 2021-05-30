@@ -15,6 +15,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/appointment_cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -50,11 +51,13 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="5dp"
-                android:onClick="@{() -> listener.onClick(appointment)}"
-                android:text="@string/details" />
+                android:layout_marginEnd="5dp"
+                android:onClick="@{() -> listener.onRemoveClick(appointment.id)}"
+                android:text="@string/remove"
+                android:textSize="12sp"
+                app:backgroundTint="#810101" />
 
         </RelativeLayout>
 

@@ -1,12 +1,15 @@
 package com.example.planmymeetings
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.example.planmymeetings.screens.appointments.AppointmentItemAdapter
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.util.*
+import java.util.concurrent.ThreadLocalRandom
 import kotlin.collections.ArrayList
 
 object FirebaseService {
@@ -18,6 +21,8 @@ object FirebaseService {
         mAppointmentRefs = mFireStore.collection("Appointments")
     }
 
+    private val random = Random()
+
     private fun uploadTestData() {
         for (i in 1..30) {
             val notes = ArrayList<Note>()
@@ -26,7 +31,7 @@ object FirebaseService {
                     Note(
                         j,
                         "Alice$j",
-                        Date(54323),
+                        Calendar.getInstance().time,
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                     )
                 )
@@ -34,12 +39,12 @@ object FirebaseService {
             mAppointmentRefs.add(
                 Appointment(
                     i,
-                    "meeting",
-                    Date(2021),
+                    "meeting$i",
+                    Calendar.getInstance().time,
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                    Date(7483),
-                    AppointmentStateType.initialized,
-                    Date(8120),
+                    Calendar.getInstance().time,
+                    AppointmentStateType.values()[random.nextInt(5)],
+                    Calendar.getInstance().time,
                     notes,
                     "place$i"
                 )
@@ -66,9 +71,6 @@ object FirebaseService {
     }
 
     fun getAppointmentById(id: Int): Task<QuerySnapshot> {
-        mAppointmentRefs.document("notes").get().addOnSuccessListener {
-            it.data
-        }
         return mAppointmentRefs.whereEqualTo("id", id).limit(1).get()
     }
 }

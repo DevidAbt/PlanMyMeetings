@@ -1,6 +1,8 @@
 package com.example.planmymeetings.screens.appointments
 
 import android.content.Context
+import android.os.Debug
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -30,6 +32,9 @@ class AppointmentItemAdapter(
         fun bindTo(appointment: Appointment, appointmentListener: AppointmentListener) {
             binding.appointment = appointment
             binding.listener = appointmentListener
+            binding.appointmentCardView.setOnClickListener {
+                appointmentListener.clickListener(appointment.id)
+            }
             binding.executePendingBindings()
         }
 
@@ -107,6 +112,9 @@ class AppointmentItemAdapter(
     }
 }
 
-class AppointmentListener(val clickListener: (appointmentId: Int) -> Unit) {
-    fun onClick(appointment: Appointment) = clickListener(appointment.id)
+class AppointmentListener(
+    val clickListener: (appointmentId: Int) -> Unit,
+    val removeClickListener: (appointmentId: Int) -> Unit
+) {
+    fun onRemoveClick(appointmentId: Int) = removeClickListener(appointmentId)
 }

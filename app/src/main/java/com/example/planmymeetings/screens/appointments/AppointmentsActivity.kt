@@ -58,12 +58,19 @@ class AppointmentsActivity : AppCompatActivity() {
         mRecyclerView.layoutManager = GridLayoutManager(this, gridNumber)
         mItemList = ArrayList()
 
-        mAdapter = AppointmentItemAdapter(this, mItemList, AppointmentListener {
+        mAdapter = AppointmentItemAdapter(this, mItemList, AppointmentListener({
             Log.d(LOG_TAG, "clicked on item: $it")
             val intent = Intent(this, AppointmentDetailsActivity::class.java)
             intent.putExtra("appointmentId", it)
             startActivity(intent)
-        })
+        }, { appointmentId ->
+            FirebaseService.getAppointmentById(appointmentId).onSuccessTask { querySnapshot ->
+                querySnapshot?.documents?.first()?.reference!!.delete().addOnSuccessListener {
+                    FirebaseService.queryData(mAdapter)
+                    Log.d(LOG_TAG, "appointment removed ($appointmentId)")
+                }
+            }
+        }))
         mRecyclerView.adapter = mAdapter
 
         FirebaseService.queryData(mAdapter)

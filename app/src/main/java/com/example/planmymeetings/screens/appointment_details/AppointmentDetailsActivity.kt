@@ -25,6 +25,8 @@ class AppointmentDetailsActivity : AppCompatActivity() {
     private lateinit var mItemList: ArrayList<Note>
     private lateinit var mAdapter: NoteItemAdapter
 
+    private lateinit var mSpinnerAdapter: ArrayAdapter<CharSequence>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,13 +42,15 @@ class AppointmentDetailsActivity : AppCompatActivity() {
         mAdapter = NoteItemAdapter(this, mItemList)
         mRecyclerView.adapter = mAdapter
 
-        val adapter: ArrayAdapter<CharSequence> =
+        mSpinnerAdapter =
             ArrayAdapter.createFromResource(this, R.array.state_types, R.layout.state_spinner_item)
-        adapter.setDropDownViewResource(R.layout.state_spinner_dropdown_item)
-        binding.statusSpinner.adapter = adapter
+        mSpinnerAdapter.setDropDownViewResource(R.layout.state_spinner_dropdown_item)
+        binding.statusSpinner.adapter = mSpinnerAdapter
 
-        val validForText = findViewById<TextView>(R.id.validForText)
+        fetchData(appointmentId)
+    }
 
+    private fun fetchData(appointmentId: Int) {
         FirebaseService.getAppointmentById(appointmentId).addOnSuccessListener {
             val appointment = it.toObjects(Appointment::class.java)[0]
             binding.validForText.text = dateToLongString(appointment.validFor)
@@ -55,6 +59,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
             binding.descriptionText.text = appointment.description
             binding.creationDateText.text = dateToLongString(appointment.creationDate)
             binding.lastUpdateText.text = dateToLongString(appointment.lastUpdate)
+            setSpinner(appointment.status)
 
             mItemList.clear()
             for (note in appointment.notes) {
@@ -62,5 +67,10 @@ class AppointmentDetailsActivity : AppCompatActivity() {
             }
             mAdapter.notifyDataSetChanged()
         }
+    }
+
+    private fun setSpinner(state: AppointmentStateType) {
+        val spinnerPosition = mSpinnerAdapter.getPosition(state.toString())
+        binding.statusSpinner.setSelection(spinnerPosition)
     }
 }
