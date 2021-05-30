@@ -29,9 +29,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/secondary_background_color"
                 android:orientation="horizontal"
-                android:theme="@style/Theme.PlanMyMeetings"
-                android:background="@color/secondary_background_color">
+                android:theme="@style/Theme.PlanMyMeetings">
 
                 <TextView
                     style="@style/AppointmentTextView"
@@ -50,16 +50,16 @@
                     android:id="@+id/remove_note_button"
                     android:layout_width="18dp"
                     android:layout_height="19dp"
-                    android:scaleType="fitXY"
-                    android:background="@null"
-                    android:maxWidth="5dp"
                     android:layout_margin="8dp"
+                    android:background="@null"
+                    android:contentDescription="@string/remove_note"
+                    android:maxWidth="5dp"
+                    android:onClick="@{() -> listener.onRemoveClick(note)}"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/my_remove_icon_foreground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:onClick="@{() -> listener.onRemoveClick(note)}"
-                    android:contentDescription="@string/remove_note">
+                    app:layout_constraintTop_toTopOf="parent">
 
                 </ImageButton>
 
@@ -80,8 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{note.text}"
                 android:textAlignment="center"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                />
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
 
         </LinearLayout>
 

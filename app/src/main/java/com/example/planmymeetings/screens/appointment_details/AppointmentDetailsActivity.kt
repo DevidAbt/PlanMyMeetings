@@ -76,10 +76,10 @@ class AppointmentDetailsActivity : AppCompatActivity() {
             ) {
                 val newStateString = appointmentStateValues[position].toString()
                 if (appointment != null && newStateString != appointment!!.status.toString())
-                FirebaseService.updateAppointmentStateById(
-                    appointmentId,
-                    newStateString
-                )
+                    FirebaseService.updateAppointmentStateById(
+                        appointmentId,
+                        newStateString
+                    )
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

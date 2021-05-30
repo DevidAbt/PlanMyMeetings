@@ -8,12 +8,11 @@ import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.planmymeetings.R
-import com.example.planmymeetings.screens.register.RegisterActivity
 import com.example.planmymeetings.databinding.ActivityLoginBinding
 import com.example.planmymeetings.screens.appointments.AppointmentsActivity
+import com.example.planmymeetings.screens.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private val LOG_TAG = RegisterActivity::class.java.name

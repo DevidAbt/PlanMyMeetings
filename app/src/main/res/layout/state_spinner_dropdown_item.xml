@@ -2,13 +2,13 @@
 <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@android:id/text2"
-    android:singleLine="true"
     android:layout_width="match_parent"
     android:layout_height="30dp"
-    android:ellipsize="marquee"
-    android:theme="@style/Theme.PlanMyMeetings"
-    android:textColor="@color/secondary_color"
     android:background="@color/secondary_background_color"
+    android:ellipsize="marquee"
     android:padding="4dp"
+    android:singleLine="true"
+    android:textColor="@color/secondary_color"
+    android:theme="@style/Theme.PlanMyMeetings"
     tools:text="item" />
 

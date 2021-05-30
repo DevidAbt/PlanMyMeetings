@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.planmymeetings.screens.add_note.AddNoteViewModel" />
@@ -21,8 +22,8 @@
 
         <TextView
             style="@style/TitleText"
-            android:textAlignment="center"
-            android:text="@string/add_note" />
+            android:text="@string/add_note"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/noteId"

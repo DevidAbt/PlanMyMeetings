@@ -58,5 +58,5 @@ class NoteItemAdapter(
 class NoteListener(
     private val removeClickListener: (note: Note) -> Unit
 ) {
-   fun onRemoveClick(note: Note) = removeClickListener(note)
+    fun onRemoveClick(note: Note) = removeClickListener(note)
 }

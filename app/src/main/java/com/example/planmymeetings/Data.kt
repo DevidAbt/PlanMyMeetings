@@ -24,7 +24,17 @@ data class Appointment(
     val relatedPlace: String?,
 ) {
     // needed for firebase
-    constructor(): this(-1, defaultString, defaultDate, defaultString, defaultDate, AppointmentStateType.initialized, defaultDate, defaultNotes, null)
+    constructor() : this(
+        -1,
+        defaultString,
+        defaultDate,
+        defaultString,
+        defaultDate,
+        AppointmentStateType.initialized,
+        defaultDate,
+        defaultNotes,
+        null
+    )
 }
 
 data class Note(

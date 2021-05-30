@@ -1,20 +1,15 @@
 package com.example.planmymeetings.screens.register
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.planmymeetings.R
-import com.example.planmymeetings.databinding.ActivityLoginBinding
 import com.example.planmymeetings.databinding.ActivityRegisterBinding
-import com.example.planmymeetings.screens.login.LoginViewModel
-import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
     private val LOG_TAG = RegisterActivity::class.java.name

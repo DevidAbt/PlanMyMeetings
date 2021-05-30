@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.planmymeetings.screens.add_appointment.AddAppointmentViewModel" />
@@ -21,9 +22,9 @@
 
         <TextView
             style="@style/TitleText"
-            android:textAlignment="center"
             android:lines="2"
-            android:text="@string/add_appointment" />
+            android:text="@string/add_appointment"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/idEdit"

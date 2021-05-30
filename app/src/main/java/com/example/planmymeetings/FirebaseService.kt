@@ -1,17 +1,13 @@
 package com.example.planmymeetings
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import com.example.planmymeetings.screens.appointment_details.NoteItemAdapter
 import com.example.planmymeetings.screens.appointments.AppointmentItemAdapter
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.util.*
-import java.util.concurrent.ThreadLocalRandom
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 

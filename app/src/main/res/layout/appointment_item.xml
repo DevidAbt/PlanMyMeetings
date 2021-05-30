@@ -38,16 +38,14 @@
                 style="@style/AppointmentTextView"
                 android:layout_centerHorizontal="true"
                 android:text="@{appointment.category}"
-                tools:text="meeting"
-                />
+                tools:text="meeting" />
 
             <TextView
                 android:id="@+id/description"
                 style="@style/AppointmentTextView"
                 android:layout_below="@+id/validFor"
                 android:text="@{appointment.description}"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                />
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
 
             <Button
                 android:layout_width="wrap_content"

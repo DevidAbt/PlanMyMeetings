@@ -9,8 +9,6 @@ import com.example.planmymeetings.screens.login.LoginActivity
 import com.example.planmymeetings.screens.register.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
-    private val LOG_TAG = MainActivity::class.java.name
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
