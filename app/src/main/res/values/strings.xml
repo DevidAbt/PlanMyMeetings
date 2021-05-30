@@ -23,4 +23,13 @@
     <string name="last_update_text">Last Update</string>
     <string name="remove">Remove</string>
     <string name="remove_note">Remove Note</string>
+    <string name="add_note">Add Note</string>
+    <string name="appointment_number">Appointment Number</string>
+    <string name="related_place">Related Place</string>
+    <string name="description2">Description</string>
+    <string name="category2">Category</string>
+    <string name="valid_for2">Valid For</string>
+    <string name="add_appointment">Add Appointment</string>
+    <string name="add">add</string>
+    <string name="refresh">Refresh</string>
 </resources>

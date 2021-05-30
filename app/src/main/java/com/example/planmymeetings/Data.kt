@@ -33,6 +33,7 @@ data class Note(
     val date: Date,
     val text: String,
 ) {
+    // needed for firebase
     constructor() : this(-1, defaultString, defaultDate, defaultString)
 }
 

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanMyMeetings">
-        >
+        <activity android:name=".screens.add_note.AddAppointmentActivity"></activity>
         <activity android:name=".screens.appointment_details.AppointmentDetailsActivity" />
         <activity android:name=".screens.appointments.AppointmentsActivity" />
         <activity android:name=".screens.login.LoginActivity" />

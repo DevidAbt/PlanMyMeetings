@@ -113,4 +113,13 @@ object FirebaseService {
                 }
             }
     }
+
+    fun addAppointment(appointment: Appointment) {
+        mAppointmentRefs.add(appointment).addOnSuccessListener {
+            Log.d(
+                LOG_TAG,
+                "appointment added ($appointment.id)"
+            )
+        }
+    }
 }
